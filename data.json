@@ -1,0 +1,312 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Фрукты",
+      "description": "Фрукты являются богатейшим источником витаминов и минералов, эффективно применяясь для профилактики многих болезней, от простуды до онкологии. В зависимости от вида, в них содержатся витамины С, А, Е, группы В, включая фолиевую кислоту, калий, магний, сера, кальций, фосфор и другие фитонутриенты, а также антиоксиданты."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Овощи",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Орехи",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Яблоки Golden",
+      "description": "Является источником железа, йода, калия, кальция, магния, марганца, меди, натрия, фосфора, фтора, цинка, а также витаминов А, В5, В6, В9, С и РР.",
+      "image": "products/fruits_01.png",
+      "category": 1,
+      "price": 226,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Бананы",
+      "description": "",
+      "image": "products/fruits_02.png",
+      "category": 1,
+      "price": 119,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "Абрикос",
+      "description": "",
+      "image": "products/fruits_03.png",
+      "category": 1,
+      "price": 354,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Слива",
+      "description": "",
+      "image": "products/fruits_04.png",
+      "category": 1,
+      "price": 227,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "name": "Персик",
+      "description": "",
+      "image": "products/fruits_05.png",
+      "category": 1,
+      "price": 218,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "name": "Виноград",
+      "description": "",
+      "image": "products/fruits_06.png",
+      "category": 1,
+      "price": 466,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Яблоко Red Chief",
+      "description": "",
+      "image": "products/fruits_07.png",
+      "category": 1,
+      "price": 350,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Киви",
+      "description": "",
+      "image": "products/fruits_08.png",
+      "category": 1,
+      "price": 313,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "name": "Картофель",
+      "description": "",
+      "image": "products/vegetables_01.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "name": "Морковь",
+      "description": "",
+      "image": "products/vegetables_02.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "name": "Лук репчатый",
+      "description": "",
+      "image": "products/vegetables_03.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "name": "Капуста белокочанная",
+      "description": "",
+      "image": "products/vegetables_04.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "name": "Огурцы",
+      "description": "",
+      "image": "products/vegetables_05.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 14,
+    "fields": {
+      "name": "Помидоры",
+      "description": "",
+      "image": "products/vegetables_06.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "name": "Кабачки",
+      "description": "",
+      "image": "products/vegetables_07.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 16,
+    "fields": {
+      "name": "Брокколи",
+      "description": "",
+      "image": "products/vegetables_08.png",
+      "category": 2,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "name": "Грецкий орех",
+      "description": "",
+      "image": "products/nuts_01.png",
+      "category": 3,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 18,
+    "fields": {
+      "name": "Миндаль",
+      "description": "",
+      "image": "products/nuts_02.png",
+      "category": 3,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 19,
+    "fields": {
+      "name": "Фундук",
+      "description": "",
+      "image": "products/nuts_03.png",
+      "category": 3,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 20,
+    "fields": {
+      "name": "Кедровые орехи",
+      "description": "",
+      "image": "products/nuts_04.png",
+      "category": 3,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 21,
+    "fields": {
+      "name": "Арахис",
+      "description": "",
+      "image": "products/nuts_05.png",
+      "category": 3,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 22,
+    "fields": {
+      "name": "Фисташки",
+      "description": "",
+      "image": "products/nuts_06.png",
+      "category": 3,
+      "price": 0,
+      "created_at": "2023-08-06",
+      "changed_at": "2023-08-06"
+    }
+  }
+]

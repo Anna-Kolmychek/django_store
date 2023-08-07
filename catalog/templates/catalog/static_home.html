@@ -1,0 +1,352 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Магазинчик</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="{% static 'catalog/css/custom_styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+
+<header class="container">
+    <div class="row">
+        <nav id="navbar" class="navbar">
+            <div class="col-3">
+                <a class="navbar-brand text-uppercase fs-3 text-color-green" href="/"><b>Магазинчик</b></a>
+            </div>
+            <div class="col-7">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis fs-5" href="#fruits">Фрукты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis fs-5" href="#vegetables">Овощи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link-body-emphasis fs-5" href="#nuts">Орехи</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-2  text-end">
+                <a class="link-body-emphasis fs-5 me-3" href="/contacts/">Контакты</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main role="main">
+    <div class="container my-5 text-white">
+        <div class="row bg-green">
+            <div class="col-6 p-5 align-self-center">
+                <p class="fs-1">Отборные фрукты и овощи с&nbsp;доставкой</p>
+                <p class="fs-5">Только свежие, вкусные, отборные овощи и&nbsp;фрукты. С&nbsp;доставкой в&nbsp;день
+                    заказа.</p>
+            </div>
+            <div class="col-6">
+                <img src="{% static 'catalog/img/main_image.png' %}" class="img-fluid"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light-orange py-3">
+        <div class="container">
+            <h1 id="fruits" class="py-3 text-color-orange">Фрукты</h1>
+
+            <div class="container pb-5">
+                <div class="row row-cols-4 g-4">
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_01.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Яблоки">
+                            <div class="card-body">
+                                <h5 class="card-title">Яблоки Golden</h5>
+                                <p class="card-text">Цена: 226 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_02.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Бананы">
+                            <div class="card-body">
+                                <h5 class="card-title">Бананы</h5>
+                                <p class="card-text">Цена: 119 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_03.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Абрикос">
+                            <div class="card-body">
+                                <h5 class="card-title">Абрикос</h5>
+                                <p class="card-text">Цена: 354 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_04.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Слива">
+                            <div class="card-body">
+                                <h5 class="card-title">Слива</h5>
+                                <p class="card-text">Цена: 227 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_05.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Персик">
+                            <div class="card-body">
+                                <h5 class="card-title">Персик</h5>
+                                <p class="card-text">Цена: 218 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_06.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Виноград">
+                            <div class="card-body">
+                                <h5 class="card-title">Виноград</h5>
+                                <p class="card-text">Цена: 466 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_07.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Яблоко Red Chief">
+                            <div class="card-body">
+                                <h5 class="card-title">Яблоко Red Chief</h5>
+                                <p class="card-text">Цена: 350 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/fruits_08.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Киви">
+                            <div class="card-body">
+                                <h5 class="card-title">Киви</h5>
+                                <p class="card-text">Цена: 313 ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light-green py-3">
+        <div class="container">
+            <h1 id="vegetables" class="py-3 text-color-green">Овощи</h1>
+
+            <div class="container pb-5">
+                <div class="row row-cols-4 g-4">
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_01.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Картофель">
+                            <div class="card-body">
+                                <h5 class="card-title">Картофель</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_02.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Морковь">
+                            <div class="card-body">
+                                <h5 class="card-title">Морковь</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_03.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Лук репчатый">
+                            <div class="card-body">
+                                <h5 class="card-title">Лук репчатый</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_04.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Капуста белокочанная">
+                            <div class="card-body">
+                                <h5 class="card-title">Капуста белокочанная</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_05.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Огурцы">
+                            <div class="card-body">
+                                <h5 class="card-title">Огурцы</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_06.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Помидоры">
+                            <div class="card-body">
+                                <h5 class="card-title">Помидоры</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_07.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Кабачки">
+                            <div class="card-body">
+                                <h5 class="card-title">Кабачки</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-green h-100">
+                            <img src="{% static 'catalog/img/vegetables_08.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Брокколи">
+                            <div class="card-body">
+                                <h5 class="card-title">Брокколи</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-success bg-dark-green text-white border-0">Добавить в
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light-orange py-3">
+        <div class="container">
+            <h1 id="nuts" class="py-3 text-color-orange">Орехи</h1>
+
+            <div class="container pb-5">
+                <div class="row row-cols-4 g-4">
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/nuts_01.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Грецкий орех">
+                            <div class="card-body">
+                                <h5 class="card-title">Грецкий орех</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/nuts_02.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Миндаль">
+                            <div class="card-body">
+                                <h5 class="card-title">Миндаль</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/nuts_03.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Фундук">
+                            <div class="card-body">
+                                <h5 class="card-title">Фундук</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/nuts_04.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Кедровые орехи">
+                            <div class="card-body">
+                                <h5 class="card-title">Кедровые орехи</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/nuts_05.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Арахис">
+                            <div class="card-body">
+                                <h5 class="card-title">Арахис</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light-orange h-100">
+                            <img src="{% static 'catalog/img/nuts_06.png' %}"
+                                 class="card-img-top img-fluid pt-3" alt="Фисташки">
+                            <div class="card-body">
+                                <h5 class="card-title">Фисташки</h5>
+                                <p class="card-text">Цена: ... ₽/кг</p>
+                                <a href="#" class="btn btn-warning bg-orange text-white border-0">Добавить в корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="bg-green py-2">
+    <footer class="container text-center pt-2">
+        <p>&copy; Company 2023</p>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>

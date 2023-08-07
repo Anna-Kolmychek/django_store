@@ -1,13 +1,11 @@
 from django.db import models
 
-
 NULLABLE = {'null': 'True', 'blank': 'True'}
 
 
 class Category(models.Model):
     name = models.CharField(max_length=100, verbose_name='Наименование')
     description = models.TextField(verbose_name='Описание', **NULLABLE)
-
 
     def __str__(self):
         return f'{self.name}'
@@ -34,3 +32,16 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
         ordering = ['category', 'name']
+
+
+class CompanyContact(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    icon_bootstrap = models.CharField(max_length=100, verbose_name='Иконка Bootstrap')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'

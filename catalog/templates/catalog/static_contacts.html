@@ -31,12 +31,24 @@
         <div class="row">
             <div class="col-7 bg-green">
                 <div class="row row-cols-2 text-white h-100">
-                    {% for item in cont %}
-                    <div class="col p-4 align-self-center">
-                        <h3><i class="bi {{ item.icon_bootstrap }}"></i> {{ item.name }}</h3>
-                        <p class="fs-5">{{ item.description | linebreaks }}</p>
+                    <div class="col p-4 align-self-end">
+                        <h3><i class="bi bi-telephone"></i> Позвоните нам</h3>
+                        <p class="fs-5">0-000-000-00-00<br>
+                            0-000-000-00-00</p>
                     </div>
-                    {% endfor %}
+                    <div class="col p-4 align-self-end">
+                        <h3><i class="bi bi-telegram"></i> Напишите нам</h3>
+                        <p class="fs-5">t.me/qwerty<br>&nbsp;</p>
+                    </div>
+                    <div class="col p-4">
+                        <h3><i class="bi bi-geo-alt"></i> Наш адрес</h3>
+                        <p class="fs-5">Город NN, улица Ленина,<br> дом 1</p>
+                    </div>
+                    <div class="col p-4">
+                        <h3><i class="bi bi-calendar3"></i> Режим работы</h3>
+                        <p class="fs-5">Пн–Вс: с 10:00 до 19:00<br>
+                            Без выходных и перерывов</p>
+                    </div>
                 </div>
             </div>
             <div class="col-5 px-4">

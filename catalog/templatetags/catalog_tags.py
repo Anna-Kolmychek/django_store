@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -25,3 +26,8 @@ def text_color(i=1):
         return 'text-color-orange'
     else:
         return 'text-color-green'
+
+
+@register.simple_tag
+def mediapath(file_path):
+    return f'{settings.MEDIA_URL}{file_path}'

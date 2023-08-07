@@ -66,7 +66,7 @@
                     <div class="col">
                         <div class="card {% bg_light_color forloop.parentloop.counter %} h-100">
 
-                            <img src="media/{{ product.image }}"
+                            <img src="{% mediapath product.image %}"
                                  class="card-img-top img-fluid pt-3">
                             <div class="card-body">
                                 <h5 class="card-title">{{ product.name }}</h5>

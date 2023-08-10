@@ -1,8 +1,6 @@
-import json
 from datetime import date
 
 from django.shortcuts import render, redirect
-from django.urls import reverse
 
 from catalog.forms import NewProductForm
 from catalog.models import Category, Product, CompanyContact
@@ -71,6 +69,7 @@ def get_product_data(request):
         'changed_at': date.today(),
     }
     return product_data
+
 
 def save_new_product(product_data):
     category = Category.objects.get(pk=product_data['category'])

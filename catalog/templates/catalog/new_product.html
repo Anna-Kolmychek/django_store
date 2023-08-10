@@ -9,47 +9,47 @@
     <h1 class="text-white p-3">Добавление нового продукта</h1>
 
     <div class="row">
-    <div class="col-7">
+        <div class="col-7">
 
-        <form method="POST" class="p-3 fs-5 needs-validation" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="productName" class="form-label">Наименование</label>
-                <input type="text" name="name" class="form-control" id="productName" required>
-            </div>
+            <form method="POST" class="p-3 fs-5 needs-validation" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="productName" class="form-label">Наименование</label>
+                    <input type="text" name="name" class="form-control" id="productName" required>
+                </div>
 
-            <div class="mb-3">
-                <label for="productCategory" class="form-label">Категория продукта</label>
-                <select class="form-select" id="productCategory" name="category">
-                    {% for category in categories %}
-                    <option value="{{ category.pk }}">{{ category.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+                <div class="mb-3">
+                    <label for="productCategory" class="form-label">Категория продукта</label>
+                    <select class="form-select" id="productCategory" name="category">
+                        {% for category in categories %}
+                        <option value="{{ category.pk }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-            <div class="mb-3">
-                <label for="productDescription" class="form-label">Описание продукта</label>
-                <textarea class="form-control" name="description" id="productDescription" rows="3"></textarea>
-            </div>
+                <div class="mb-3">
+                    <label for="productDescription" class="form-label">Описание продукта</label>
+                    <textarea class="form-control" name="description" id="productDescription" rows="3"></textarea>
+                </div>
 
-            <div class="mb-3">
-                <label for="productImage" class="form-label">Изображение продукта</label>
-                <input type="file" name="image" class="form-control" id="productImage">
-            </div>
+                <div class="mb-3">
+                    <label for="productImage" class="form-label">Изображение продукта</label>
+                    <input type="file" name="image" class="form-control" id="productImage">
+                </div>
 
-            <div class="mb-3">
-                <label for="productPrice" class="form-label">Цена (₽/кг)</label>
-                <input type="number" name="price" class="form-control" id="productPrice"
-                       data-bind="value:replyNumber" min="0">
-            </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Цена (₽/кг)</label>
+                    <input type="number" name="price" class="form-control" id="productPrice"
+                           data-bind="value:replyNumber" min="0">
+                </div>
 
-            <button type="submit" class="btn btn-light my-3">Добавить</button>
-        </form>
-    </div>
-
-    <div class="col-5 p-5">
-        <img src="{% static 'catalog/img/new_product_icon.png' %}" class="img-fluid p-5" alt="Новый продукт">
-    </div>
+                <button type="submit" class="btn btn-light my-3">Добавить</button>
+            </form>
         </div>
+
+        <div class="col-5 p-5">
+            <img src="{% static 'catalog/img/new_product_icon.png' %}" class="img-fluid p-5" alt="Новый продукт">
+        </div>
+    </div>
 </div>
 {% endblock %}

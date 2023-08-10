@@ -16,6 +16,7 @@
             <p>Первые поставки: {{ product.created_at|date:'d.m.Y' }}<br/>
                 Последние изменения {{ product.changed_at|date:'d.m.Y' }}</p>
             <a href="{% url 'catalog:index' %}" class="text-white">На главную</a>
+            <a href="{% url 'catalog:new_product' %}" class="text-white px-4">Добавить продукт</a>
         </div>
         <div class="col-6 p-0 text-end align-self-center">
             <img src="{% mediapath product.image%}" class="img-fluid" alt="{{ product.name }}">

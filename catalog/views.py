@@ -1,6 +1,5 @@
 from datetime import date
 
-from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from catalog.forms import NewProductForm
@@ -10,18 +9,11 @@ from catalog.models import Category, Product, CompanyContact
 def home(request):
     data = []
     categories = Category.objects.all()
-    paginators = {}
-    url_pages = ''
     for category in categories:
-        paginators['category.pk'] = Paginator(Product.objects.filter(category=category.pk), 4)
-        page_number = request.GET.get(f'page_{category.pk}')
-        if page_number:
-            url_pages += f'page_{category.pk}={page_number}&'
         data.append({
             'category': category,
-            'products': paginators['category.pk'].get_page(page_number)
+            'products': Product.objects.filter(category=category.pk)
         })
-    url_pages = url_pages[:-1]
     data = sorted(data, key=lambda item: item['category'].pk)
 
     # для доп. задания: добавьте выборку последних 5 товаров и вывод их в консоль.

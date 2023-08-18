@@ -1,89 +1,42 @@
-from datetime import date
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, DetailView, CreateView
 
-from django.shortcuts import render, redirect
-
-from catalog.forms import NewProductForm
-from catalog.models import Category, Product, CompanyContact
+from catalog.models import Category, Product, CompanyContact, UserQuestion
 
 
-def home(request):
-    data = []
-    categories = Category.objects.all()
-    for category in categories:
-        data.append({
-            'category': category,
-            'products': Product.objects.filter(category=category.pk)
-        })
-    data = sorted(data, key=lambda item: item['category'].pk)
+class ProductListView(ListView):
+    model = Product
 
-    # для доп. задания: добавьте выборку последних 5 товаров и вывод их в консоль.
-    # last_products = Product.objects.all().order_by('-id')[:5]
-    # print(last_products)
-
-    return render(request, 'catalog/index.html', context={'data': data})
+    def get_context_data(self):
+        data = []
+        categories = Category.objects.all()
+        for category in categories:
+            data.append({
+                'category': category,
+                'products': Product.objects.filter(category=category.pk)
+            })
+        data = sorted(data, key=lambda item: item['category'].pk)
+        return {'data': data}
 
 
-def contact(request):
-    if request.method == 'POST':
-        user_name = request.POST.get('name')
-        user_phone = request.POST.get('phone')
-        user_email = request.POST.get('email')
-        user_message = request.POST.get('message')
-        print(f'New message from: '
-              f'{user_name} (phone: {user_phone}, email: {user_email})\n'
-              f'message: {user_message}')
+class ProductDetailView(DetailView):
+    model = Product
 
+
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ['name', 'description', 'image', 'category', 'price']
+    extra_context = {'categories': Category.objects.all()}
+
+    def get_success_url(self):
+        return reverse('catalog:view', kwargs={'pk': self.object.pk})
+
+
+class UserQuestionCreateView(CreateView):
+    model = UserQuestion
+    fields = ['user_name', 'phone', 'email', 'question']
     company_contacts = CompanyContact.objects.all()
     company_contacts = sorted(company_contacts, key=lambda item: item.pk)
-    return render(request, 'catalog/contact.html', context={'cont': company_contacts})
+    extra_context = {'cont': company_contacts}
+    success_url = reverse_lazy('catalog:contact')
 
-
-def product(request, product_id: int):
-    context = {
-        'product': Product.objects.filter(pk=product_id).select_related('category').get()
-    }
-    print(context)
-    return render(request, 'catalog/product.html', context)
-
-
-def new_product(request):
-    if request.method == 'POST':
-        form = NewProductForm(request.POST, request.FILES)
-        prod = form.save()
-        return redirect(f'../product/{prod.pk}')
-
-    context = {
-        'categories': Category.objects.all(),
-    }
-    return render(request, 'catalog/new_product.html', context)
-
-
-def get_product_data(request):
-    product_data = {
-        'name': request.POST.get('name'),
-        'description': request.POST.get('description'),
-        'image': request.POST.get('image'),
-        'category': request.POST.get('category'),
-        'price': request.POST.get('price'),
-        'created_at': date.today(),
-        'changed_at': date.today(),
-    }
-    return product_data
-
-
-def save_new_product(product_data):
-    category = Category.objects.get(pk=product_data['category'])
-    try:
-        price = int(product_data['price'])
-    except ValueError:
-        price = None
-
-    Product.objects.create(
-        name=product_data['name'],
-        description=product_data['description'],
-        image=product_data['image'],
-        category=category,
-        price=price,
-        created_at=product_data['created_at'],
-        changed_at=product_data['changed_at'],
-    )

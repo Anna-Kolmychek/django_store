@@ -47,3 +47,18 @@ class CompanyContact(models.Model):
     class Meta:
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакты'
+
+
+class UserQuestion(models.Model):
+    user_name = models.CharField(max_length=150, verbose_name='Имя')
+    phone = models.CharField(max_length=20, verbose_name='Телефон')
+    email = models.EmailField(verbose_name='Почта')
+    question = models.TextField(verbose_name='Вопрос')
+    created_at = models.DateField(verbose_name='Дата', default=date.today())
+
+    def __str__(self):
+        return f'{self.user_name}: {self.question[:20]}'
+
+    class Meta:
+        verbose_name = 'Вопрос пользователя'
+        verbose_name_plural = 'Вопросы пользователей'

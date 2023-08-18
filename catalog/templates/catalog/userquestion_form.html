@@ -1,0 +1,51 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block internal_navigation %}
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-7 bg-green">
+            <div class="row row-cols-2 text-white h-100">
+                {% for item in cont %}
+                <div class="col p-4 align-self-center">
+                    <h3><i class="bi {{ item.icon_bootstrap }}"></i> {{ item.name }}</h3>
+                    <p class="fs-5">{{ item.description | linebreaks }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-5 px-4">
+            <h3>Задать вопрос здесь</h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Имя</label>
+                    <input name="user_name" type="text" class="form-control" id="inputName" placeholder="Имя">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPhone" class="form-label">Телефон</label>
+                    <input name="phone" type="text" class="form-control" id="inputPhone"
+                           placeholder="+7 (000) 000-00-00">
+                </div>
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Почта</label>
+                    <input name="email" type="text" class="form-control" id="inputEmail"
+                           placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="inputMessage" class="form-label">Текст сообщения</label>
+                    <textarea name="question" class="form-control" id="inputMessage" rows="3"
+                              placeholder="Ваш вопрос"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success bg-dark-green text-white border-0">Отправить</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <img src="{% static 'catalog/img/food_contacts.png' %}" class="img-fluid">
+    </div>
+</div>
+{% endblock %}

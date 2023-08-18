@@ -44,7 +44,7 @@
                 <div class="col">
                     <div class="card {% bg_light_color forloop.parentloop.counter %} h-100" >
 
-                        <a href="{% url 'catalog:product' product_id=product.pk %}">
+                        <a href="{% url 'catalog:view' product.pk %}">
                             <img src="{% mediapath product.image %}"
                              class="card-img-top img-fluid pt-3">
                         </a>

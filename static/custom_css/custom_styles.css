@@ -6,14 +6,17 @@ body {
 .bg-green {
     background-color: #a8c114;
 }
+
 .bg-light-green {
     background-color: #f3f7dd;
 }
+
 .bg-dark-green {
     background-color: #788a0b;
 }
+
 .bg-red {
-    background-color: #ffebe9;
+    background-color: #ac2c12;
 }
 
 .bg-light-orange {
@@ -22,6 +25,10 @@ body {
 
 .bg-orange {
     background-color: #e48218;
+}
+
+.bg-custom-btn-orange {
+    background-color: #ffd152;
 }
 
 .text-color-green {

@@ -41,6 +41,8 @@ class BlogDetailView(DetailView):
         self.object = super().get_object(queryset)
         self.object.views_count += 1
         self.object.save()
+        print(settings.EMAIL_HOST_USER)
+        print(settings.EMAIL_HOST_PASSWORD)
 
         if self.object.views_count == 100:
             send_mail(

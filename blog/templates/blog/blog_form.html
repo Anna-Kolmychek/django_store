@@ -7,7 +7,13 @@
 
 {% block content %}
 <div class="container bg-green my-5">
-    <h1 class="text-white p-3">Добавление новой статьи</h1>
+    <h1 class="text-white p-3">
+        {% if object %}
+            Редактирование статьи
+        {% else %}
+            Добавление новой статьи
+        {% endif %}
+    </h1>
 
     <div class="row">
         <div class="col-7">

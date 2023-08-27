@@ -12,11 +12,16 @@
             <h3>Категория: {{ object.category|lower }}</h3>
             <h1 class="pt-4">{{ object.name }}</h1>
             <p class="fs-5">{{ object.description }}</p>
-            <h3 class="py-4">Цена: {{ object.price }} ₽/кг</h3>
+            <h3 class="py-4">Цена: {{ object.price }} ₽/кг
+            {% if object.current_harvest %}
+            <br>Cбор урожая: {{ object.current_harvest.harvest_date|date:'d.m.Y' }}
+            {% endif %}
+            </h3>
             <p>Первые поставки: {{ object.created_at|date:'d.m.Y' }}<br/>
-                Последние изменения {{ object.changed_at|date:'d.m.Y' }}</p>
+                Последние изменения: {{ object.changed_at|date:'d.m.Y' }}</p>
             <a href="{% url 'catalog:index' %}" class="text-white">На главную</a>
-            <a href="{% url 'catalog:create' %}" class="text-white px-4">Добавить продукт</a>
+            <a href="{% url 'catalog:update' object.pk %}" class="text-white px-4">Изменить продукт</a>
+            <a href="{% url 'catalog:create' %}" class="text-white">Добавить продукт</a>
         </div>
         <div class="col-6 p-0 text-end align-self-center">
             <img src="{% mediapath product.image%}" class="img-fluid" alt="{{ product.name }}">

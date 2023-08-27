@@ -44,3 +44,11 @@ body {
 }
 
 
+.errorlist
+    {
+        color: #b4091c;
+        font-weight: bold;
+        list-style-type: none;
+        padding: 0;
+    }
+

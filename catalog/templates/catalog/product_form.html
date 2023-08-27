@@ -1,55 +1,80 @@
 {% extends 'catalog/base.html' %}
 {% load static %}
+{% load catalog_tags %}
 
 {% block internal_navigation %}
 {% endblock %}
 
 {% block content %}
 <div class="container bg-green my-5">
-    <h1 class="text-white p-3">Добавление нового продукта</h1>
+    <h1 class="text-white p-3">
+        {% if object %}
+        Редактирование продукта
+        {% else %}
+        Добавление нового продукта
+        {% endif %}
+    </h1>
 
     <div class="row">
-        <div class="col-7">
-
+        <div class="col-6">
             <form method="POST" class="p-3 fs-5 needs-validation" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <label for="productName" class="form-label">Наименование</label>
-                    <input type="text" name="name" class="form-control" id="productName" required>
-                </div>
+                {{ form.as_p }}
 
-                <div class="mb-3">
-                    <label for="productCategory" class="form-label">Категория продукта</label>
-                    <select class="form-select" id="productCategory" name="category">
-                        {% for category in categories %}
-                        <option value="{{ category.pk }}">{{ category.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="productDescription" class="form-label">Описание продукта</label>
-                    <textarea class="form-control" name="description" id="productDescription" rows="3"></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <label for="productImage" class="form-label">Изображение продукта</label>
-                    <input type="file" name="image" class="form-control" id="productImage">
-                </div>
-
-                <div class="mb-3">
-                    <label for="productPrice" class="form-label">Цена (₽/кг)</label>
-                    <input type="number" name="price" class="form-control" id="productPrice"
-                           data-bind="value:replyNumber" min="0">
-                </div>
-
-                <button type="submit" class="btn btn-light my-3">Добавить</button>
+                <button type="submit" class="btn btn-light my-3">
+                    {% if object %}
+                    Изменить
+                    {% else %}
+                    Добавить
+                    {% endif %}
+                </button>
+                <a href="{% url 'catalog:index' %}" class="btn btn-light my-3">
+                    На главную
+                </a>
             </form>
         </div>
 
-        <div class="col-5 p-5">
+        {% if object %}
+        <div class="col-6 px-5 pt-1 fs-5">
+            <h4 class="text-white">Информаци о поставке / сборе урожая</h4>
+            {% for harvest in object.harvest_set.all %}
+            <table style="width:100%">
+                <tr>
+                    <td>Номер поставки</td>
+                    <td>{{ harvest.harvest_number }}</td>
+                    <td rowspan="3">
+                        <a href="{% url 'catalog:update_harvest' harvest.pk %}" class="btn btn-outline-dark my-3">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Дата сбора урожая</td>
+                    <td>{{ harvest.harvest_date }}</td>
+                </tr>
+                <tr>
+                    <td>Текущая поставка</td>
+                    <td><input class="form-check-input" type="checkbox"
+                               {% if harvest.is_current %}
+                               checked
+                               {% endif %}
+                               disabled></td>
+                </tr>
+            </table>
+            <hr>
+            {% endfor %}
+            <div class="d-grid col-6 mx-auto">
+                <a href="{% url 'catalog:create_harvest' object.pk %}" class="btn btn-outline-dark btn-block">
+                Завести новую поставку
+            </a>
+            </div>
+
+        </div>
+        {% else %}
+        <div class="col-6 p-5 fs-5">
             <img src="{% static 'catalog/img/new_product_icon.png' %}" class="img-fluid p-5" alt="Новый продукт">
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

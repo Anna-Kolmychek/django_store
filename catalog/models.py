@@ -24,11 +24,15 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', verbose_name='Изображение', **NULLABLE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='id категории')
     price = models.IntegerField(verbose_name='Цена', **NULLABLE)
-    created_at = models.DateField(verbose_name='Дата создания', default=date.today())
-    changed_at = models.DateField(verbose_name='Дата изменения', default=date.today())
+    created_at = models.DateField(verbose_name='Дата создания', auto_now_add=True)
+    changed_at = models.DateField(verbose_name='Дата изменения', auto_now=True)
 
     def __str__(self):
         return f'{self.name}'
+
+    @property
+    def current_harvest(self):
+        return self.harvest_set.filter(is_current=True).last()
 
     class Meta:
         verbose_name = 'Продукт'
@@ -54,7 +58,7 @@ class UserQuestion(models.Model):
     phone = models.CharField(max_length=20, verbose_name='Телефон')
     email = models.EmailField(verbose_name='Почта')
     question = models.TextField(verbose_name='Вопрос')
-    created_at = models.DateField(verbose_name='Дата', default=date.today())
+    created_at = models.DateField(verbose_name='Дата', auto_now_add=True)
 
     def __str__(self):
         return f'{self.user_name}: {self.question[:20]}'
@@ -62,3 +66,17 @@ class UserQuestion(models.Model):
     class Meta:
         verbose_name = 'Вопрос пользователя'
         verbose_name_plural = 'Вопросы пользователей'
+
+
+class Harvest(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
+    harvest_number = models.IntegerField(verbose_name='Номер')
+    harvest_date = models.DateField(verbose_name='Дата сбора урожая')
+    is_current = models.BooleanField(default=False, verbose_name='Текущая поставка (да/нет)')
+
+    def __str__(self):
+        return f'({self.harvest_number}) {self.harvest_date} - {self.product}'
+
+    class Meta:
+        verbose_name = 'Поставка'
+        verbose_name_plural = 'Поставки'

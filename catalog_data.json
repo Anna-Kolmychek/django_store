@@ -111,7 +111,7 @@
       "category": 1,
       "price": 350,
       "created_at": "2023-08-06",
-      "changed_at": "2023-08-06"
+      "changed_at": "2023-08-27"
     }
   },
   {
@@ -343,6 +343,56 @@
       "name": "Режим работы",
       "description": "Пн–Вс: с 10:00 до 19:00\r\nБез выходных и перерывов",
       "icon_bootstrap": "bi-calendar3"
+    }
+  },
+  {
+    "model": "catalog.harvest",
+    "pk": 1,
+    "fields": {
+      "product": 7,
+      "harvest_number": 1,
+      "harvest_date": "2023-04-04",
+      "is_current": false
+    }
+  },
+  {
+    "model": "catalog.harvest",
+    "pk": 2,
+    "fields": {
+      "product": 7,
+      "harvest_number": 2,
+      "harvest_date": "2023-08-01",
+      "is_current": false
+    }
+  },
+  {
+    "model": "catalog.harvest",
+    "pk": 3,
+    "fields": {
+      "product": 1,
+      "harvest_number": 1,
+      "harvest_date": "2023-08-01",
+      "is_current": false
+    }
+  },
+  {
+    "model": "catalog.harvest",
+    "pk": 4,
+    "fields": {
+      "product": 12,
+      "harvest_number": 1,
+      "harvest_date": "2023-08-10",
+      "is_current": true
+    }
+  },
+  {
+    "model": "catalog.harvest",
+    "pk": 26,
+    "fields": {
+      "product": 7,
+      "harvest_number": 3,
+      "harvest_date": "2023-08-10",
+      "is_current": true
     }
   }
 ]

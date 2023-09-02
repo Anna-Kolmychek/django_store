@@ -1,8 +1,11 @@
+from urllib import request
+
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from catalog.forms import ProductForm, UserQuestionForm, HarvestForm
 from catalog.models import Category, Product, CompanyContact, UserQuestion, Harvest
+from users.models import User
 
 
 class ProductListView(ListView):
@@ -30,6 +33,13 @@ class ProductCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('catalog:view', kwargs={'pk': self.object.pk})
+
+    def form_valid(self, form):
+        new_product = form.save(commit=False)
+        new_product.owner = self.request.user
+        new_product.save()
+
+        return super().form_valid(form)
 
 
 class ProductUpdateView(UpdateView):

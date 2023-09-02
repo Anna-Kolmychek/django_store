@@ -18,7 +18,7 @@ class StyleFormMixin:
 class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ('created_at', 'changed_at',)
+        exclude = ('created_at', 'changed_at', 'owner', )
         labels = {
             'name': 'Наименование',
             'description': 'Описание продукта',

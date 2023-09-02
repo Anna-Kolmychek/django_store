@@ -9,7 +9,8 @@
       "preview": "blog/aaaa.png",
       "created_at": "2023-08-19",
       "is_published": false,
-      "views_count": 0
+      "views_count": 0,
+      "owner": 1
     }
   },
   {
@@ -22,7 +23,8 @@
       "preview": "blog/article2.jpg",
       "created_at": "2023-08-19",
       "is_published": true,
-      "views_count": 0
+      "views_count": 0,
+      "owner": 1
     }
   },
   {
@@ -35,7 +37,8 @@
       "preview": "blog/article3.jpg",
       "created_at": "2023-08-19",
       "is_published": true,
-      "views_count": 0
+      "views_count": 0,
+      "owner": 1
     }
   },
   {
@@ -48,7 +51,8 @@
       "preview": "blog/article4.jpg",
       "created_at": "2023-08-19",
       "is_published": true,
-      "views_count": 0
+      "views_count": 0,
+      "owner": 1
     }
   },
   {
@@ -61,7 +65,8 @@
       "preview": "blog/article5.jpg",
       "created_at": "2023-08-19",
       "is_published": true,
-      "views_count": 0
+      "views_count": 1,
+      "owner": 1
     }
   },
   {
@@ -74,7 +79,8 @@
       "preview": "blog/article6.jpg",
       "created_at": "2023-08-19",
       "is_published": true,
-      "views_count": 0
+      "views_count": 1,
+      "owner": 1
     }
   },
   {
@@ -87,7 +93,8 @@
       "preview": "",
       "created_at": "2023-08-19",
       "is_published": true,
-      "views_count": 0
+      "views_count": 2,
+      "owner": 1
     }
   }
 ]

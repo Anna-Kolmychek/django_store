@@ -1,11 +1,9 @@
-from urllib import request
-
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from catalog.forms import ProductForm, UserQuestionForm, HarvestForm
 from catalog.models import Category, Product, CompanyContact, UserQuestion, Harvest
-from users.models import User
 
 
 class ProductListView(ListView):
@@ -14,10 +12,16 @@ class ProductListView(ListView):
     def get_context_data(self):
         data = []
         categories = Category.objects.all()
+        print(self.request.user.has_perm('catalog.can_moderate'))
         for category in categories:
+            products = Product.objects.filter(category=category.pk)
+            if not self.request.user.is_authenticated:
+                products = products.filter(is_published=True)
+            elif not self.request.user.has_perm('catalog.can_moderate'):
+                products = products.filter(owner=self.request.user) | products.filter(is_published=True)
             data.append({
                 'category': category,
-                'products': Product.objects.filter(category=category.pk),
+                'products': products
             })
         data = sorted(data, key=lambda item: item['category'].pk)
         return {'data': data}
@@ -27,9 +31,15 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
+
+    def get_form(self, form_class=None):
+        form = super().get_form()
+        if not self.request.user.has_perm('catalog.can_moderate'):
+            form.fields['is_published'].disabled = True
+        return form
 
     def get_success_url(self):
         return reverse('catalog:view', kwargs={'pk': self.object.pk})
@@ -42,9 +52,25 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
     form_class = ProductForm
+
+    def get_form(self, form_class=None):
+        form = super().get_form()
+        if self.request.user.has_perm('catalog.can_moderate'):
+            form.fields['name'].disabled = True
+            form.fields['image'].disabled = True
+            form.fields['price'].disabled = True
+        else:
+            form.fields['is_published'].disabled = True
+        return form
+
+    def test_func(self):
+        pk = int(self.request.path.split('/')[-1])
+        is_author = Product.objects.get(pk=pk).owner == self.request.user
+        can_moderate = self.request.user.has_perm('catalog.can_moderate')
+        return is_author or can_moderate
 
     def get_success_url(self):
         return reverse_lazy('catalog:view', args=[self.kwargs['pk']])

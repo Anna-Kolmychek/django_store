@@ -13,7 +13,7 @@ class Blog(models.Model):
     message = models.TextField(verbose_name='содержимое', **NULLABLE)
     preview = models.ImageField(upload_to='blog/', verbose_name='превью', **NULLABLE)
     created_at = models.DateField(auto_now_add=True, verbose_name='дата создания')
-    is_published = models.BooleanField(default=True, verbose_name='опубликовано (да/нет)')
+    is_published = models.BooleanField(default=False, verbose_name='опубликовано (да/нет)')
     views_count = models.IntegerField(default=0, verbose_name='количество просмотров')
     owner = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=user_admin, verbose_name='Автор')
 
@@ -23,3 +23,9 @@ class Blog(models.Model):
     class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+        permissions = [
+            (
+                'content_manager',
+                'can published, update, delete in blog'
+             )
+        ]

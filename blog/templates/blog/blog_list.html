@@ -47,7 +47,7 @@
                                       text-white border-0">
                         Посмотреть
                     </a>
-                    {% if request.user.is_authenticated %}
+                    {% if perms.blog.content_manager or object.owner == request.user %}
                     <a href="{% url 'blog:update' object.pk %}"
                        class="btn btn-warning bg-custom-btn-orange border-0">
                         <i class="bi bi-pencil"></i>

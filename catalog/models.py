@@ -31,6 +31,7 @@ class Product(models.Model):
     created_at = models.DateField(verbose_name='Дата создания', auto_now_add=True)
     changed_at = models.DateField(verbose_name='Дата изменения', auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=user_admin, verbose_name='Автор')
+    is_published = models.BooleanField(verbose_name='Опубликовано (да/нет)', default=False)
 
     def __str__(self):
         return f'{self.name}'
@@ -43,6 +44,12 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
         ordering = ['category', 'name']
+        permissions = [
+            (
+                'moderator',
+                'can change is_published, description, category'
+            )
+        ]
 
 
 class CompanyContact(models.Model):

@@ -1,15 +1,30 @@
 from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from pytils.translit import slugify
 
+from blog.forms import BlogForm
 from blog.models import Blog
 
 
-class BlogCreateView(CreateView):
+def is_author_or_manager(request):
+    pk = int(request.path.split('/')[-1])
+    is_author = Blog.objects.get(pk=pk).owner == request.user
+    is_content_manager = request.user.has_perm('blog.content_manager')
+    return is_author or is_content_manager
+
+
+class BlogCreateView(LoginRequiredMixin, CreateView):
     model = Blog
-    fields = ('title', 'message', 'preview')
+    form_class = BlogForm
+
+    def get_form(self, form_class=None):
+        form = super().get_form()
+        if not self.request.user.has_perm('blog.content_manager'):
+            form.fields['is_published'].disabled = True
+        return form
 
     def get_success_url(self, *args, **kwargs):
         return reverse('blog:detail', args={self.object.pk})
@@ -29,7 +44,10 @@ class BlogListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(is_published=True)
+        if not self.request.user.is_authenticated:
+            queryset = queryset.filter(is_published=True)
+        elif not self.request.user.has_perm('blog.content_manager'):
+            queryset = queryset.filter(is_published=True) | queryset.filter(owner=self.request.user)
         queryset = queryset.order_by('-created_at', )
         return queryset
 
@@ -52,14 +70,26 @@ class BlogDetailView(DetailView):
         return self.object
 
 
-class BlogUpdateView(UpdateView):
+class BlogUpdateView(UserPassesTestMixin, UpdateView):
     model = Blog
-    fields = ('title', 'message', 'preview', 'is_published')
+    form_class = BlogForm
+
+    def test_func(self):
+        return is_author_or_manager(self.request)
+
+    def get_form(self, form_class=None):
+        form = super().get_form()
+        if not self.request.user.has_perm('blog.content_manager'):
+            form.fields['is_published'].disabled = True
+        return form
 
     def get_success_url(self):
         return reverse('blog:detail', args=[self.kwargs['pk']])
 
 
-class BlogDeleteView(DeleteView):
+class BlogDeleteView(UserPassesTestMixin, DeleteView):
     model = Blog
     success_url = reverse_lazy('blog:list')
+
+    def test_func(self):
+        return is_author_or_manager(self.request)

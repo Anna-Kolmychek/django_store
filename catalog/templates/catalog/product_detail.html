@@ -25,9 +25,12 @@
             <p>Первые поставки: {{ object.created_at|date:'d.m.Y' }}<br/>
                 Последние изменения: {{ object.changed_at|date:'d.m.Y' }}</p>
             <a href="{% url 'catalog:index' %}" class="text-white">На главную</a>
+
+            {% if perms.proudct_can_moderate or product.owner == user %}
+            <a href="{% url 'catalog:update' object.pk %}" class="text-white ps-4">Изменить продукт</a>
+            {% endif %}
             {% if request.user.is_authenticated %}
-            <a href="{% url 'catalog:update' object.pk %}" class="text-white px-4">Изменить продукт</a>
-            <a href="{% url 'catalog:create' %}" class="text-white">Добавить продукт</a>
+            <a href="{% url 'catalog:create' %}" class="text-white ps-4">Добавить продукт</a>
             {% endif %}
         </div>
         <div class="col-6 p-0 text-end align-self-center">

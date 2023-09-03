@@ -27,20 +27,20 @@ class RegisterView(CreateView):
         send_mail(
             'Подтверждение регистрации',
             f'Вы зарегистрировались на сайте. Пройдите по ссылке, чтобы подтвердить регистрацию:\n'
-            f'{get_current_site(self.request).domain}/users/confirm_email/{user.pk}?key={user.auth_key}',
+            f'{get_current_site(self.request).domain}/users/confirm_email?key={user.auth_key}',
             settings.EMAIL_HOST_USER,
             [user.email]
         )
         return super().form_valid(form)
 
 
-def confirm_email(request, pk):
-    user = User.objects.get(pk=pk)
+def confirm_email(request):
+    url_key = request.GET.get('key')
+    user = User.objects.filter(auth_key=url_key).first()
     if user:
-        if user.auth_key == request.GET.get('key'):
-            user.is_active = True
-            user.save()
-            return render(request, 'users/confirm_email_success.html')
+        user.is_active = True
+        user.save()
+        return render(request, 'users/confirm_email_success.html')
     return render(request, 'users/confirm_email_error.html')
 
 

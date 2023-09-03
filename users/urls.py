@@ -14,6 +14,6 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('password_reset/', password_reset, name='password_reset'),
     path('password_reset_done/', password_reset_done, name='password_reset_done'),
-    path('confirm_email/<int:pk>', confirm_email, name='confirm_email'),
+    path('confirm_email/', confirm_email, name='confirm_email'),
     path('confirm_email_start/', confirm_email_start, name='confirm_email_start'),
 ]
